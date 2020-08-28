@@ -21,7 +21,7 @@ class App extends Component {
 
   renderChart() {
     if (this.state.data.length === 0) {
-      return "No datos todavia";
+      return "Sin datos todavia";
     }
     return <ChartWrapper data={this.state.data} />;
   }
@@ -30,7 +30,7 @@ class App extends Component {
     return (
       <div>
         <Navbar bg="light">
-          <Navbar.Brand>DwgPad</Navbar.Brand>
+          <Navbar.Brand>DWGPad</Navbar.Brand>
         </Navbar>
         <Container>
           <Row>

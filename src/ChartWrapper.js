@@ -1,14 +1,15 @@
-import React, { useRef, useState, useEffect, Component } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import D3Chart from "./D3Chart";
 
 const ChartWrapper = (data) => {
   const chartArea = useRef(null);
   const [chart, setChart] = useState(null);
-  const [datos, setDatos] = useState(data);
+  //const [datos, setDatos] = useState(data);
 
   useEffect(() => {
     if (!chart) {
-	  setChart(new D3Chart(chartArea.current, datos));
+	  //setChart(new D3Chart(chartArea.current, datos));
+	  setChart(new D3Chart(chartArea.current, data));
     } else {
       chart.update();
     }
