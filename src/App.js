@@ -8,6 +8,8 @@ import { json } from "d3";
 
 import ChartWrapper from "./ChartWrapper";
 
+import Table from './Table';
+
 class App extends Component {
   state = {
     data: [],
@@ -26,18 +28,26 @@ class App extends Component {
     return <ChartWrapper data={this.state.data} />;
   }
 
+  // updateData = (data) => {
+  //   this.setState({
+  //     data: data
+  //   })
+  // }
+
+  updateData = (data) =>  this.setState({ data }) 
+
   render() {
     return (
       <div>
         <Navbar bg="light">
-          <Navbar.Brand>DWGPad</Navbar.Brand>
+          <Navbar.Brand>DWGPadGus</Navbar.Brand>
         </Navbar>
         <Container>
           <Row>
-            <Col md={6} xs={12}>
+            <Col sm={6} md={6} xs={12}>
               {this.renderChart()}
             </Col>
-            <Col md={6} xs={12}></Col>
+            <Col sm={6} md={6} xs={12}><Table data= {this.state.data} updateData= {this.updateData}/></Col>
           </Row>
         </Container>
       </div>
