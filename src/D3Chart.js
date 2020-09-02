@@ -8,7 +8,7 @@ class D3Chart {
   constructor(element, data) {
     let vis = this;
 
-    vis.datos = data;
+    //vis.datos = data;
 
     vis.g = d3
       .select(element)
@@ -49,8 +49,9 @@ class D3Chart {
 	//vis.update();
   }
 
-  update() {
+  update(data) {
 	let vis = this;
+	vis.datos = data;
 
 	//UPDATE DOMAIN OF SCALES TO DATA
 	vis.x.domain([0, d3.max(vis.datos.data.map((d) => Number(d.age)))]);
