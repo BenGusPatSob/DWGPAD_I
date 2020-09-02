@@ -46,13 +46,13 @@ class D3Chart {
 		.attr("text-anchor", "middle")
 		.text("Height");
 		
-	//vis.update();
+	vis.update(data);
   }
 
   update(data) {
 	let vis = this;
 	vis.datos = data;
-
+console.log("Hola hola", vis.datos);
 	//UPDATE DOMAIN OF SCALES TO DATA
 	vis.x.domain([0, d3.max(vis.datos.data.map((d) => Number(d.age)))]);
 	vis.y.domain([0, d3.max(vis.datos.data.map((d) => Number(d.height)))]);
@@ -66,20 +66,20 @@ class D3Chart {
 
 	//JOIN DATA TO GEOMETRY
 	const circles = vis.g.selectAll("circle")
-		.data(vis.datos.data.map(d => d.name));
+		.data(vis.datos.map(d => d.name));
 
 	//EXIT
 	circles.exit().remove();
 
 	//UPDATE
-	vis.datos.data.map(d => circles
+	vis.datos.map(d => circles
 							.enter()
 							.append("circle")
 							.attr("cx", vis.x(d.age))
 							.attr("cy", vis.y(d.height)));
 
 	//ENTER	
-	vis.datos.data.map(d => circles
+	vis.datos.map(d => circles
 								.enter()
 								.append("circle")
 								.attr("cx", vis.x(d.age))

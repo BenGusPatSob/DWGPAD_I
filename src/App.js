@@ -11,9 +11,14 @@ import ChartWrapper from "./ChartWrapper";
 import Table from './Table';
 
 class App extends Component {
-  state = {
-    data: [],
-  };
+  constructor(props){
+    super(props);
+    this.state = {data: []};
+  }
+  // state = {
+  //   data: [],
+  // };
+  
 
   componentWillMount() {
     json("https://udemy-react-d3.firebaseio.com/children.json")
@@ -25,16 +30,12 @@ class App extends Component {
     if (this.state.data.length === 0) {
       return "Sin datos todavia";
     }
-    return <ChartWrapper data={this.state.data} />;
+    // console.log("Hola, hola, hola...");
+    // this.updateData(this.state.data);
+    return <ChartWrapper data={this.state.data} onChange={this.updateData}/>;
   }
 
-  // updateData = (data) => {
-  //   this.setState({
-  //     data: data
-  //   })
-  // }
-
-  updateData = (data) =>  this.setState({ data }) 
+  updateData = (data) =>  { this.setState({ data }); }
 
   render() {
     return (
@@ -44,10 +45,8 @@ class App extends Component {
         </Navbar>
         <Container>
           <Row>
-            <Col sm={6} md={6} xs={12}>
-              {this.renderChart()}
-            </Col>
-            <Col sm={6} md={6} xs={12}><Table data= {this.state.data} updateData= {this.updateData}/></Col>
+            <Col sm={12} md={6} xs={12}><Table data= {this.state.data} updateData= {this.updateData}/></Col>
+            <Col sm={12} md={6} xs={12}>{this.renderChart()}</Col>
           </Row>
         </Container>
       </div>
