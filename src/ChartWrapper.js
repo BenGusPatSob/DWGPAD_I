@@ -30,7 +30,7 @@ export default class ChartWrapper extends Component {
     return false;
   }
   componentWillReceiveProps(nextProps) {
-    console.log("Pues yo bien", nextProps);
+    // console.log("Pues yo bien", nextProps);
     this.state.chart.update(nextProps.data);
   }
   render() {

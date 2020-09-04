@@ -52,12 +52,11 @@ class D3Chart {
   update(data) {
 	let vis = this;
 	vis.datos = data;
-console.log("Hola que tal?", vis.datos);
+
 	//UPDATE DOMAIN OF SCALES TO DATA
 	vis.x.domain([0, d3.max(vis.datos.map((d) => Number(d.age)))]);
 	vis.y.domain([0, d3.max(vis.datos.map((d) => Number(d.height)))]);
 
-	console.log("d3.max(vis.datos.map((d) => Number(d.age)))", d3.max(vis.datos.map((d) => Number(d.age))));
 	//UPDATE AXIS TO DATA
 	const xAxisCall = d3.axisBottom(vis.x);
 	const yAxisCall = d3.axisLeft(vis.y);
@@ -66,11 +65,18 @@ console.log("Hola que tal?", vis.datos);
 	vis.yAxisGroup.call(yAxisCall);
 
 	//JOIN DATA TO GEOMETRY
-	const circles = vis.g.selectAll("circle")
+	let circles = vis.g.selectAll("circle")
 		.data(vis.datos.map(d => d.name));
+
+		console.log(vis.datos.map(d => d.name));
+	console.log("circles_Join", circles);
+	// console.log("vis.datos_Join", vis.datos);
 
 	//EXIT
 	circles.exit().remove();
+
+	console.log("circles._Exit", circles);
+	// console.log("vis.datos_Exit", vis.datos);
 
 	//UPDATE
 	vis.datos.map(d => circles
@@ -78,6 +84,9 @@ console.log("Hola que tal?", vis.datos);
 							.append("circle")
 							.attr("cx", vis.x(d.age))
 							.attr("cy", vis.y(d.height)));
+
+	console.log("circles_Update", circles);
+	// console.log("vis.datos_Update", vis.datos);
 
 	//ENTER	
 	vis.datos.map(d => circles
@@ -87,6 +96,10 @@ console.log("Hola que tal?", vis.datos);
 								.attr("cy", vis.y(d.height))
 								.attr("r", 5)
 								.attr("fill", "black"));
+
+	console.log("circles_Enter", circles);
+	// console.log("vis.datos_Enter", vis.datos);
+
   }
 }
 
