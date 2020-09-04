@@ -30,7 +30,7 @@ export default class Table extends Component {
   handleRemove = (event) => {
     const newData = this.props.data.filter((d) => {
       // event.target.name
-      return d.name != event.target.name;
+      return d.name !== event.target.name;
     });
     this.props.updateData(newData);
   };

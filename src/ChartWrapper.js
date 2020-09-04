@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect, Component } from "react";
+// import React, { useRef, useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import D3Chart from "./D3Chart";
 
 // const ChartWrapper = (data) => {
@@ -29,8 +30,8 @@ export default class ChartWrapper extends Component {
     return false;
   }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    this.state.chart.update(nextProps);
+    console.log("Pues yo bien", nextProps);
+    this.state.chart.update(nextProps.data);
   }
   render() {
     return <div className="chart-area" ref="chart"></div>;

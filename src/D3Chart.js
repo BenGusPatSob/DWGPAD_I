@@ -52,11 +52,12 @@ class D3Chart {
   update(data) {
 	let vis = this;
 	vis.datos = data;
-console.log("Hola hola", vis.datos);
+console.log("Hola que tal?", vis.datos);
 	//UPDATE DOMAIN OF SCALES TO DATA
-	vis.x.domain([0, d3.max(vis.datos.data.map((d) => Number(d.age)))]);
-	vis.y.domain([0, d3.max(vis.datos.data.map((d) => Number(d.height)))]);
+	vis.x.domain([0, d3.max(vis.datos.map((d) => Number(d.age)))]);
+	vis.y.domain([0, d3.max(vis.datos.map((d) => Number(d.height)))]);
 
+	console.log("d3.max(vis.datos.map((d) => Number(d.age)))", d3.max(vis.datos.map((d) => Number(d.age))));
 	//UPDATE AXIS TO DATA
 	const xAxisCall = d3.axisBottom(vis.x);
 	const yAxisCall = d3.axisLeft(vis.y);
