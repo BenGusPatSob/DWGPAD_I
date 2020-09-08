@@ -15,10 +15,6 @@ class App extends Component {
     super(props);
     this.state = {data: []};
   }
-  // state = {
-  //   data: [],
-  // };
-  
 
   componentWillMount() {
     json("https://udemy-react-d3.firebaseio.com/children.json")
@@ -30,12 +26,18 @@ class App extends Component {
     if (this.state.data.length === 0) {
       return "Sin datos todavia";
     }
-    // console.log("Hola, hola, hola...");
-    // this.updateData(this.state.data);
-    return <ChartWrapper data={this.state.data} onChange={this.updateData}/>;
+    console.log("Desde App (renderChart): ", this.state.data);
+    return <ChartWrapper data={this.state.data} updateData={this.updateData}/>;
   }
 
-  updateData = (data) =>  { this.setState({ data }); }
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.data !== nextState.data;
+  } 
+
+  updateData = (data) =>  { 
+    console.log("Desde App (updateData): ", data);
+    this.setState({ data }); 
+  }
 
   render() {
     return (

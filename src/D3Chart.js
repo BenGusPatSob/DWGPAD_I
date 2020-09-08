@@ -52,6 +52,7 @@ class D3Chart {
   update(data) {
 	let vis = this;
 	vis.datos = data;
+	console.log("Desde d3chart", vis.datos);
 
 	//UPDATE DOMAIN OF SCALES TO DATA
 	vis.x.domain([0, d3.max(vis.datos.map((d) => Number(d.age)))]);
@@ -68,14 +69,14 @@ class D3Chart {
 	let circles = vis.g.selectAll("circle")
 		.data(vis.datos.map(d => d.name));
 
-		console.log(vis.datos.map(d => d.name));
-	console.log("circles_Join", circles);
+		//console.log(vis.datos.map(d => d.name));
+	//console.log("circles_Join", circles);
 	// console.log("vis.datos_Join", vis.datos);
 
 	//EXIT
 	circles.exit().remove();
 
-	console.log("circles._Exit", circles);
+	//console.log("circles._Exit", circles);
 	// console.log("vis.datos_Exit", vis.datos);
 
 	//UPDATE
@@ -85,7 +86,7 @@ class D3Chart {
 							.attr("cx", vis.x(d.age))
 							.attr("cy", vis.y(d.height)));
 
-	console.log("circles_Update", circles);
+	//console.log("circles_Update", circles);
 	// console.log("vis.datos_Update", vis.datos);
 
 	//ENTER	
@@ -97,7 +98,7 @@ class D3Chart {
 								.attr("r", 5)
 								.attr("fill", "black"));
 
-	console.log("circles_Enter", circles);
+	//console.log("circles_Enter", circles);
 	// console.log("vis.datos_Enter", vis.datos);
 
   }
